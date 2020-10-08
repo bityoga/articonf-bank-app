@@ -446,7 +446,8 @@ app.post("/transfer_amount", async (req, res) => {
       CHAIN_CODE_FUNCTION_NAME,
       FROM_USER_NAME,
       TO_USER_NAME,
-      AMOUNT
+      AMOUNT,
+      REASON
     );
 
     response = {
