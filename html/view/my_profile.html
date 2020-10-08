@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+
+
+<style>
+   div.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 2px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+  color: #fff!important; 
+  background-color: #305342!important;
+}
+
+
+/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+  @media screen and (max-width: 600px) {
+  .calendar_text{
+    font-size: 3vw;
+  }
+  #graph_updated_timestamp{
+    font-size: 3vw;
+  }
+  .w3-sidebar{
+    width: 100vw;
+  }
+}
+
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.w3-sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE and Edge */
+.w3-sidebar {
+  -ms-overflow-style: none;
+}
+
+
+/* .w3-sidebar:hover {
+  overflow-y:visible;
+}
+
+
+.w3-sidebar::-webkit-scrollbar {
+  width: 5px;
+}
+
+
+.w3-sidebar::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+
+.w3-sidebar::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+
+.w3-sidebar::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+} */
+
+.tiles{
+  /*background-color: #c2e4ff !important;*/
+  color: #272424!important;
+  padding: 2vw;
+}
+
+.topright {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  font-size: 18px;
+}
+
+
+
+.loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+
+    </style>
+
+<style>
+  body {font-family: Arial, Helvetica, sans-serif;}
+  /* form {border: 3px solid #f1f1f1;} */
+  
+  input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  #bank_form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  #bank_form button:hover {
+    opacity: 0.8;
+  }
+  
+  #bank_form .cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+  }
+  
+  .imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+  }
+  
+  img.avatar {
+    width: 40%;
+    border-radius: 50%;
+  }
+  
+  .container {
+    padding: 16px;
+  }
+  
+  span.psw {
+    float: right;
+    padding-top: 16px;
+  }
+  
+  /* Change styles for span and cancel button on extra small screens */
+  @media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+  }
+
+
+
+
+  .loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+
+  </style>
+
+<body >
+<button class="w3-hover-opacity" onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i> Top</button>
+<div class="w3-sidebar w3-bar-block  w3-animate-left w3-collapse" style="display:none;left:0;width: 30vw; z-index: 3;overflow: -moz-hidden-unscrollable;" id="leftMenu">
+  <button onclick="closeLeftMenu()" class="w3-bar-item w3-button w3-hide-large">Close &times;</button>
+  <div class="w3-row">
+  </div>
+</div>
+
+<div class="w3-sidebar w3-bar-block  w3-animate-right w3-collapse" style="display:none;right:0; width:30vw;z-index: 3;overflow: -moz-hidden-unscrollable;" id="rightMenu">
+  <button onclick="closeRightMenu()" class="w3-bar-item w3-button w3-hide-large">Close &times;</button>
+  <div class="w3-row">
+</div>
+</div>
+
+<div class="w3-main w3-animate-opacity" style="margin-left: 30vw; margin-right: 30vw;">
+    <!-- <div class="sticky w3-hide-large" style="color: #fff!important; background-color: #305342!important;z-index: 2;">
+        <button class="w3-button  w3-large w3-left  w3-hide-large" onclick="openLeftMenu()"><i class="fa fa-filter" aria-hidden="true"></i> Filters</button>
+        <button class="w3-button  w3-large w3-right w3-hide-large" onclick="openRightMenu()"><i class="fas fa-user-circle" aria-hidden="true"> My Profile</i></button>
+        <div class="w3-container ">
+            <h2 class="w3-hide"><i class='fas fa-solar-panel' aria-hidden="true"></i> Stats <i class="fas fa-house-day"></i></h2>
+        </div>
+    </div> -->
+
+    <div class="sticky w3-container" style="padding: 20px;">
+      <header class="w3-container  w3-center " style="background-color:  #779687!important; color: white;">
+        <h1><i class="fa fa-bank" aria-hidden="true"></i> Hyperledger Fabric Bank</h1>
+      </header>
+
+     
+      <form  id="get_user_balance" action="/get_user_balance" enctype="multipart/form-data" method="POST" >
+        
+      
+        <div class="container w3-card">
+          <div class="w3-row w3-center">
+          <h1 class=" w3-text-blue"><i class="fa fa-money" aria-hidden="true"></i> Check Balance</h1>
+        </div>
+          <div class="w3-row w3-padding">
+          <label for="Query_User_Name"><b><i class="fa fa-user-circle" aria-hidden="true"></i> Username</b></label>
+          <!-- <input type="text" placeholder="Enter Username" name="Query_User_Name" id = "Query_User_Name" required> -->
+          <select class="w3-select w3-border" name="Query_User_Name" id = "Query_User_Name" name="option" style="font-weight: bold;color: black;background-color: white;">
+            <option value="puli" selected>puli</option>
+            <option value="puli2" selected>puli2</option>
+          </select>
+        </div>
+
+        <div class="w3-row w3-padding">
+          <div id="get_balance_loader" class="loader w3-center" style="display: none; width: 50px;height: 50px;margin-left: 45%;margin-right: 45%;"></div>
+        <button class="w3-button w3-green w3-block" type="submit"><i class="fa fa-money" aria-hidden="true"></i> Get Balance</button>
+      </div>
+      </form>
+
+      <form  id="transfer_amount" action="/transfer_amount" enctype="multipart/form-data" method="POST" >
+
+        <div class="w3-row w3-center ">
+          <h1 class="w3-text-blue"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Transfer Amount</h1>
+        </div>
+          
+
+          <div class="w3-row w3-center ">
+
+            <div class="w3-half w3-padding">
+              
+              <label for="From_User_Name"><b><i class="fa fa-user-circle" aria-hidden="true"></i> From User</b></label>
+              <!-- <input type="text" placeholder="From Username" name="From_User_Name" id = "From_User_Name" required> -->
+              <select class="w3-select w3-border" name="From_User_Name" id = "From_User_Name" name="option" style="font-weight: bold;color: black;background-color: white;">
+                <option value="puli" selected>puli</option>
+                <option value="puli2" selected>puli2</option>
+              </select>
+            </div>
+            
+            
+            <div class="w3-half w3-padding">
+              <label for="To_User_Name "><b><i class="fa fa-user-circle" aria-hidden="true"></i> To User</b></label>
+              <!-- <input type="text" placeholder="To Username" name="To_User_Name" id = "To_User_Name" required> -->
+              <select class="w3-select w3-border w3-center" name="To_User_Name" id = "To_User_Name" name="option" style="font-weight: bold;color: black;background-color: white;">
+                <option value="puli" selected>puli</option>
+                <option value="puli2" selected>puli2</option>
+              </select>
+            </div>
+            
+          </div>
+
+          <div class="w3-row w3-center w3-padding">
+          <label for="Amount"><b><i class="fa fa-money" aria-hidden="true"></i> Amount</b></label>
+          <input type="text" placeholder="Enter Username" name="Amount" id = "Amount" required>
+        </div>
+
+        <div class="w3-row w3-center w3-padding">
+          <label for="Reason"><b><i class="fa fa-question-circle" aria-hidden="true"></i> Reason</b></label>
+          
+            <select class="w3-select w3-border" name="Reason" id = "Reason" name="option" style="font-weight: bold;color: black;background-color: white;">
+              
+              <!-- <option value="" disabled selected>Choose your option</option> -->
+              <option value="Friendly_Help" selected>Friendly Help</option>
+              <option value="Emergency_Help">Emergency Help</option>
+              <option value="Payback_Loan">Payback Loan</option>
+              <option value="House_Rent">House Rent</option>
+            </select>
+          
+        </div>
+
+
+        <div class="w3-row w3-padding">
+          <div id="transfer_loader" class="loader w3-center" style="display: none; width: 50px;height: 50px;margin-left: 45%;margin-right: 45%;"></div>
+          <button class="w3-button w3-green w3-block" type="submit"><i class="fa fa-exchange aria-hidden="true"></i> Transfer</button>
+        </div>
+          
+      </form>
+        </div>
+      
+        
+     
+    
+
+
+     
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+</div>
+
+
+
+
+</div>
+
+<script type="text/javascript" src="js/double_menu.js"> </script>
+
+
+<script>
+  //Get the button
+  var mybutton = document.getElementById("myBtn");
+  
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function() {scrollFunction()};
+  
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      mybutton.style.display = "block";
+    } else {
+      mybutton.style.display = "none";
+    }
+  }
+  
+  // When the user clicks on the button, scroll to the top of the document
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="js/send_ajax_request.js"> </script>
+<script type="text/javascript"> 
+
+      if ( window.location !== window.parent.location ) {
+          // The page is in an iframe
+          console.log("in iframe");
+          
+          get_session_details();
+          
+        } 
+        
+      else {
+          // The page is not in an iframe
+          console.log("out iframe");
+          check_iframe_session();
+          
+        }
+</script> 
+
+
+
+</body>
+
+
+
+
+
+</html>
