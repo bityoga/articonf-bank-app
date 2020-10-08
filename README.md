@@ -1,4 +1,4 @@
-# Smart bank Node App
+# Articonf bank Node App
 
 # Requirements
 
