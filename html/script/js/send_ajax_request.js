@@ -207,7 +207,14 @@ $("#register_form").submit(function (e) {
       //document.getElementById("register_loader").style.display = "none";
       console.log(data);
       var json = JSON.parse(data.responseText.replace(/\bNaN\b/g, "null"));
-      //swal(json.status);
+      //swal.fire(json.status);
+      swal.fire({
+        title: "Registration Status",
+        text: json.status,
+        icon: "success",
+        confirmButtonText:
+    '<i class="fa fa-thumbs-up"></i> Great!',
+      });
       if (json["status"] === "success") {
         //document.getElementById("register").style.display = "none";
         //window.location.href = "/login_check.html";
@@ -235,7 +242,7 @@ function create_user_asset_in_chaincode() {
     complete: function (data) {
       document.getElementById("register_loader").style.display = "none";
       var json = JSON.parse(data.responseText.replace(/\bNaN\b/g, "null"));
-      swal(json["status"]);
+      //swal.fire(json["status"]);
       console.log(json);
       window.location.href = "/login_check.html";
     },
@@ -261,8 +268,17 @@ $("#login_form").submit(function (e) {
     complete: function (data) {
       document.getElementById("login_loader").style.display = "none";
       var json = JSON.parse(data.responseText.replace(/\bNaN\b/g, "null"));
-      //swal(json["status"]);
-      swal(json["status"]);
+      //swal.fire(json["status"]);
+      //swal.fire(json["status"]);
+
+      swal.fire({
+        title: "Registration Status",
+        text: json["status"],
+        icon: "success",
+        confirmButtonText:
+    '<i class="fa fa-thumbs-up"></i> Great!',
+      });
+      
       if (json["status"] === "success") {
         //console.log(document.getElementById('Login_User_Name').value);
         //$(parent.document).find("#session_user_name").text(document.getElementById("Login_User_Name").value);
@@ -287,8 +303,12 @@ $("#sell_form").submit(function (e) {
     complete: function (data) {
       document.getElementById("sell_loader").style.display = "none";
       var json = JSON.parse(data.responseText.replace(/\bNaN\b/g, "null"));
-      swal(json["data"]);
-      console.log(JSON.parse(json["data"]));
+      //swal.fire(json["data"]);
+      swal.fire({
+        title: "<i>Transaction History</i>", 
+        html: json["data"],  
+        confirmButtonText: "<u>Ok</u>", 
+      });
     },
   });
 });
@@ -307,7 +327,7 @@ $("#buy_form").submit(function (e) {
       document.getElementById("buy_confirm_invoke_chaincode").style.display =
         "none";
       var json = JSON.parse(data.responseText.replace(/\bNaN\b/g, "null"));
-      swal(json["status"]);
+      swal.fire(json["status"]);
       if (json["status"] == "success") {
         //$(".session_user_name").text(json['user_name']);
         //$(".user_id").text(json['smart_meter_id']);
@@ -336,7 +356,11 @@ $("#query_chain_code").submit(function (e) {
     complete: function (data) {
       document.getElementById("query_chain_code_loader").style.display = "none";
       var json = JSON.parse(data.responseText.replace(/\bNaN\b/g, "null"));
-      swal(json["data"]);
+      swal.fire({
+        title: "<i>All assets</i>", 
+        html: json["data"],  
+        confirmButtonText: "<u>Ok</u>", 
+      });
       console.log(JSON.parse(json["data"]));
     },
   });
@@ -355,12 +379,13 @@ $("#get_user_balance").submit(function (e) {
     complete: function (data) {
       document.getElementById("get_balance_loader").style.display = "none";
       var json = JSON.parse(data.responseText.replace(/\bNaN\b/g, "null"));
-      //swal(JSON.parse(json["data"]).Balance.toString());
-      swal({
-        title: JSON.parse(json["data"]).ID.toString(),
+      //swal.fire(JSON.parse(json["data"]).Balance.toString());
+      swal.fire({
+        title: "Bank Balance",
         text: JSON.parse(json["data"]).Balance.toString(),
         icon: "success",
-        button: "Aww yiss!",
+        confirmButtonText:
+    '<i class="fa fa-thumbs-up"></i> Great!',
       });
       console.log(JSON.parse(json["data"]));
     },
@@ -381,12 +406,13 @@ $("#transfer_amount").submit(function (e) {
       document.getElementById("transfer_loader").style.display = "none";
       var json = JSON.parse(data.responseText.replace(/\bNaN\b/g, "null"));
       console.log(json);
-      //swal(JSON.parse(json["data"]).Balance.toString());
-      swal({
-        title: json["status"].toString(),
+      //swal.fire(JSON.parse(json["data"]).Balance.toString());
+      swal.fire({
+        title: "Transaction Status",
         text: json["status"].toString(),
         icon: "success",
-        button: "Aww yiss!",
+        confirmButtonText:
+    '<i class="fa fa-thumbs-up"></i> Great!',
       });
       console.log(json["status"]);
     },
@@ -394,7 +420,7 @@ $("#transfer_amount").submit(function (e) {
 });
 
 $("#ad_submit").click(function () {
-  //swal("cancel");
+  //swal.fire("cancel");
   document.getElementById("ad_loader").style.display = "block";
   var time = new Date();
   var user_json = {
@@ -414,7 +440,7 @@ $("#ad_submit").click(function () {
     complete: function (data) {
       document.getElementById("ad_loader").style.display = "none";
       var json = JSON.parse(data.responseText.replace(/\bNaN\b/g, "null"));
-      swal(json["status"]);
+      swal.fire(json["status"]);
       if (json["status"] === "success") {
         //console.log(document.getElementById('Login_User_Name').value);
         //$(parent.document).find("#session_user_name").text(document.getElementById("Login_User_Name").value);
@@ -424,7 +450,7 @@ $("#ad_submit").click(function () {
         //get_advertisements();
         //document.getElementById('iframeID').contentWindow.location.reload();
         //parent.document.getElementById("buy").location.reload();
-        //swal(json["status"]);
+        //swal.fire(json["status"]);
         window.top.location.href = "/";
       }
     },
@@ -542,7 +568,7 @@ function get_advertisements() {
     complete: function (data) {
       //document.getElementById("buy_ad_loader").style.display = "none";
       var json = JSON.parse(data.responseText.replace(/\bNaN\b/g, "null"));
-      //swal(json['status']);
+      //swal.fire(json['status']);
       if (json["status"] === "success") {
         //console.log(document.getElementById('Login_User_Name').value);
         //$(parent.document).find("#session_user_name").text(document.getElementById("Login_User_Name").value);
