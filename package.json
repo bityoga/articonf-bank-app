@@ -1,30 +1,35 @@
 {
-  "name": "articonf-bank-app",
-  "description": "node app for smart bank use case",
+  "name": "bank_app",
   "version": "1.0.0",
-  "engines": {
-    "node": ">=8",
-    "npm": ">=5"
-  },
+  "description": "Articonf Bank App Demo",
+  "main": "app.js",
   "scripts": {
-    "lint": "eslint .",
-    "pretest": "npm run lint",
-    "test": "nyc mocha --recursive"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "engineStrict": true,
-  "main": "index.js",
-  "author": "Hyperledger",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bityoga/articonf-bank-app.git"
+  },
+  "keywords": [
+    "articonf",
+    "bank app"
+  ],
+  "author": "anandhakumar palanisamy",
   "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/bityoga/articonf-bank-app/issues"
+  },
+  "homepage": "https://github.com/bityoga/articonf-bank-app#readme",
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "express": "^4.16.4",
+    "crypto": "^1.0.1",
+    "express": "^4.17.1",
     "express-formidable": "^1.2.0",
-    "express-session": "^1.17.0",
+    "express-session": "^1.17.1",
     "fabric-ca-client": "~1.4.3",
     "fabric-network": "~1.4.3",
-    "md5": "^2.2.1",
-    "sqlite-async": "^1.0.12",
-    "sqlite3": "^4.1.1"
+    "fs": "0.0.1-security",
+    "jsonwebtoken": "^8.5.1",
+    "sqlite-async": "^1.1.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",
@@ -33,21 +38,5 @@
     "nyc": "^15.0.0",
     "sinon": "^7.1.1",
     "sinon-chai": "^3.3.0"
-  },
-  "nyc": {
-    "exclude": [
-      "coverage/**",
-      "test/**"
-    ],
-    "reporter": [
-      "text-summary",
-      "html"
-    ],
-    "all": true,
-    "check-coverage": true,
-    "statements": 100,
-    "branches": 100,
-    "functions": 100,
-    "lines": 100
   }
 }
