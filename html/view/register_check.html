@@ -148,12 +148,20 @@
       style="display: none; left: 0; width: 30vw; z-index: 3;"
       id="leftMenu"
     >
-      <!-- <button onclick="closeLeftMenu()" class="w3-bar-item w3-button  w3-hide-large">Close &times;</button> -->
       <div style="margin-top: 15vh; margin-left: 2vw;">
-        <!-- <video autoplay loop muted  style = "width: 90%;" src="images/by21.mp4"></video> -->
         <div>
-          <img style="width: 50%; margin-left: 25%;" src="images/p2p-3.gif" alt="Avatar" class="w3-image"  />
-          <img style="margin-left: 6vw;" src="images/bc_anim.gif" alt="Avatar" class="w3-image" />
+          <img
+            style="width: 50%; margin-left: 25%;"
+            src="images/p2p-3.gif"
+            alt="Avatar"
+            class="w3-image"
+          />
+          <img
+            style="margin-left: 6vw;"
+            src="images/bc_anim.gif"
+            alt="Avatar"
+            class="w3-image"
+          />
         </div>
       </div>
     </div>
@@ -162,12 +170,7 @@
       class="w3-sidebar w3-bar-block w3-animate-right w3-collapse"
       style="display: none; right: 0; width: 30vw; z-index: 3;"
       id="rightMenu"
-    >
-      <!-- <button onclick="closeRightMenu()" class="w3-bar-item w3-button w3-hide-large">Close &times;</button> -->
-      <!-- <div style="margin-top: 25vh; margin-left: 7vw; ">
-    <img src="images/logo.jpeg" alt="Avatar" >
-  </div> -->
-    </div>
+    ></div>
 
     <div
       class="w3-main w3-animate-opacity"
@@ -211,8 +214,6 @@
                 required
               />
 
-              <!-- <label for="User_House_Number"><b>Smart Meter Id</b></label>
-      <input type="text" placeholder="Enter Your Smart Meter Id"  id = "User_House_Number" name="User_House_Number" required> -->
               <div
                 id="register_loader"
                 class="loader w3-center"
@@ -246,35 +247,35 @@
         </div>
       </div>
     </div>
-    <script type="text/javascript" src="js/double_menu.js"></script>
-
-    <script>
-      //Get the button
-      var mybutton = document.getElementById("myBtn");
-
-      // When the user scrolls down 20px from the top of the document, show the button
-      window.onscroll = function () {
-        scrollFunction();
-      };
-
-      function scrollFunction() {
-        if (
-          document.body.scrollTop > 20 ||
-          document.documentElement.scrollTop > 20
-        ) {
-          mybutton.style.display = "block";
-        } else {
-          mybutton.style.display = "none";
-        }
-      }
-
-      // When the user clicks on the button, scroll to the top of the document
-      function topFunction() {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-      }
-    </script>
-
-    <script type="text/javascript" src="js/send_ajax_request.js"></script>
   </body>
+  <script type="text/javascript" src="js/double_menu.js"></script>
+
+  <script>
+    //Get the button
+    var mybutton = document.getElementById("myBtn");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () {
+      scrollFunction();
+    };
+
+    function scrollFunction() {
+      if (
+        document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop > 20
+      ) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+  </script>
+
+  <script type="text/javascript" src="js/send_ajax_request.js"></script>
 </html>

@@ -417,29 +417,32 @@ html {
 
 
 
-<script type="text/javascript" src="js/send_ajax_request.js"> </script>
-<script type="text/javascript"> 
 
-      if ( window.location !== window.parent.location ) {
-          // The page is in an iframe
-          console.log("in iframe");
-          
-          get_session_details();
-          
-        } 
-        
-      else {
-          // The page is not in an iframe
-          console.log("out iframe");
-          check_iframe_session();
-          
-        }
-</script> 
+
 
 
 
 </body>
 
+<script type="text/javascript" src="js/send_ajax_request.js"> </script>
+
+<script type="text/javascript"> 
+
+  if ( window.location !== window.parent.location ) {
+      // The page is in an iframe
+      console.log("in iframe");
+      
+      get_session_details();
+      
+    } 
+    
+  else {
+      // The page is not in an iframe
+      console.log("out iframe");
+      check_iframe_session();
+      
+    }
+</script> 
 
 
 

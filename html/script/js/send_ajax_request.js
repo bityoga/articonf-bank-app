@@ -77,18 +77,6 @@ function check_session() {
       var json = JSON.parse(data.responseText.replace(/\bNaN\b/g, "null"));
       console.log(json);
       if (json["status"] === "session active") {
-        //document.getElementById("session_user_name").textContent=json['user_name'];
-        //document.getElementById("welcome_user_span").style.display = "block";
-        //document.getElementById("logout_button").style.display = "block";
-        //document.getElementById('home').style.display = "block";
-
-        //$("#session_user_name").text(json['user_name']);
-
-        // console.log($('#my_profile').contents().find('div .session_user_name'));
-        // $('#my_profile').contents().find('.session_user_name').html(json['user_name']);
-
-        //$(".session_user_name").text(json['user_name']);
-
         $(".login_button").hide();
         $(".register_button").hide();
 
@@ -212,8 +200,7 @@ $("#register_form").submit(function (e) {
         title: "Registration Status",
         text: json.status,
         icon: "success",
-        confirmButtonText:
-    '<i class="fa fa-thumbs-up"></i> Great!',
+        confirmButtonText: '<i class="fa fa-thumbs-up"></i> Great!',
       });
       if (json["status"] === "success") {
         //document.getElementById("register").style.display = "none";
@@ -275,10 +262,9 @@ $("#login_form").submit(function (e) {
         title: "Registration Status",
         text: json["status"],
         icon: "success",
-        confirmButtonText:
-    '<i class="fa fa-thumbs-up"></i> Great!',
+        confirmButtonText: '<i class="fa fa-thumbs-up"></i> Great!',
       });
-      
+
       if (json["status"] === "success") {
         //console.log(document.getElementById('Login_User_Name').value);
         //$(parent.document).find("#session_user_name").text(document.getElementById("Login_User_Name").value);
@@ -297,7 +283,7 @@ $("#sell_form").submit(function (e) {
   document.getElementById("sell_loader").style.display = "block";
   $.ajax({
     type: "POST",
-    url: "/sell",
+    url: "/assetHistory",
     async: true,
     data: form.serialize(), // serializes the form's elements.
     complete: function (data) {
@@ -305,9 +291,9 @@ $("#sell_form").submit(function (e) {
       var json = JSON.parse(data.responseText.replace(/\bNaN\b/g, "null"));
       //swal.fire(json["data"]);
       swal.fire({
-        title: "<i>Transaction History</i>", 
-        html: json["data"],  
-        confirmButtonText: "<u>Ok</u>", 
+        title: "<i>Transaction History</i>",
+        html: json["data"],
+        confirmButtonText: "<u>Ok</u>",
       });
     },
   });
@@ -357,9 +343,9 @@ $("#query_chain_code").submit(function (e) {
       document.getElementById("query_chain_code_loader").style.display = "none";
       var json = JSON.parse(data.responseText.replace(/\bNaN\b/g, "null"));
       swal.fire({
-        title: "<i>All assets</i>", 
-        html: json["data"],  
-        confirmButtonText: "<u>Ok</u>", 
+        title: "<i>All assets</i>",
+        html: json["data"],
+        confirmButtonText: "<u>Ok</u>",
       });
       console.log(JSON.parse(json["data"]));
     },
@@ -384,8 +370,7 @@ $("#get_user_balance").submit(function (e) {
         title: "Bank Balance",
         text: JSON.parse(json["data"]).Balance.toString(),
         icon: "success",
-        confirmButtonText:
-    '<i class="fa fa-thumbs-up"></i> Great!',
+        confirmButtonText: '<i class="fa fa-thumbs-up"></i> Great!',
       });
       console.log(JSON.parse(json["data"]));
     },
@@ -411,8 +396,7 @@ $("#transfer_amount").submit(function (e) {
         title: "Transaction Status",
         text: json["status"].toString(),
         icon: "success",
-        confirmButtonText:
-    '<i class="fa fa-thumbs-up"></i> Great!',
+        confirmButtonText: '<i class="fa fa-thumbs-up"></i> Great!',
       });
       console.log(json["status"]);
     },
