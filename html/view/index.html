@@ -29,15 +29,11 @@
         <button
           onclick="check_session();"
           class="w3-bar-item w3-left w3-hover-opacity"
-          style="
-            cursor: pointer;
-            color: #666;
-            background-color: #f8f8f8;
-          "
+          style="cursor: pointer; color: #666; background-color: #f8f8f8;"
           title="Home"
         >
-        <i class="fa fa-bank"></i> Articonf Bank
-        <!-- <img src="images/p2p-3.gif" alt="Avatar" class="w3-image" width="80" height="50" /> Articonf Bank -->
+          <i class="fa fa-bank"></i> Articonf Bank
+          <!-- <img src="images/p2p-3.gif" alt="Avatar" class="w3-image" width="80" height="50" /> Articonf Bank -->
         </button>
         <!-- <button class="w3-bar-item w3-left  w3-hover-opacity" style="padding: 0px; cursor: pointer;color: #666; background-color: #f8f8f8;" title="Home"><img src="images/bityoga4.png" height="56" width="200" alt="Avatar" ></button> -->
         <!-- <span id = "welcome_user_span"  style="width:auto;display: none;" class="w3-bar-item w3-right w3-hide-small" ><i class="fa fa-user-circle-o" aria-hidden="true"></i> Welcome, <strong><span id="session_user_name">Anand </span></strong></span> -->
@@ -78,16 +74,9 @@
           ><i class="fa fa-user-plus" aria-hidden="true"></i> Register</a
         >
 
-        <!-- <a
-          href="#"
-          onclick="openLink(event, 'buy')"
-          style="display: none;"
-          class="buy_button w3-bar-item w3-button w3-hide-small w3-hide-medium tablink w3-hover-blue w3-right"
-          ><i class="fa fa-shopping-cart" aria-hidden="true"></i> Buy</a
-        > -->
         <a
           href="#"
-          onclick="document.getElementById('sell').style.display='block'"
+          onclick="document.getElementById('assetHistory').style.display='block'"
           style="width: auto; display: none;"
           class="query_button w3-bar-item w3-button w3-hide-small w3-hide-medium tablink w3-hover-blue w3-right"
           ><i class="fa fa-pencil" aria-hidden="true"></i> Asset History</a
@@ -119,7 +108,7 @@
       </button>
       <a
         href="#"
-        onclick="document.getElementById('sell').style.display='block'"
+        onclick="document.getElementById('assetHistory').style.display='block'"
         style="width: auto; display: none;"
         class="query_button w3-bar-item w3-button w3-hover-blue tablink"
         ><i class="fa fa-pencil" aria-hidden="true"></i> Asset History</a
@@ -161,15 +150,6 @@
         class="register_button w3-bar-item w3-button w3-hover-blue tablink"
         ><i class="fa fa-user-plus" aria-hidden="true"></i> Register</a
       >
-      <!-- <a
-        href="#"
-        onclick="openLink(event, 'buy')"
-        style="display: none;"
-        class="buy_button w3-bar-item w3-button w3-hover-blue tablink"
-        ><i class="fa fa-shopping-cart" aria-hidden="true"></i> Buy</a
-      > -->
-      <!-- <a href="#" onclick="document.getElementById('sell').style.display='block'" style="width:auto;display: none;" class="invoke_button w3-bar-item w3-button w3-hover-blue tablink "><i class="fa fa-pencil" aria-hidden="true"></i> Invoke</a>
-    <a  href="#" onclick="document.getElementById('query_chain_code_div').style.display='block'" style="width:auto; display: none;" class="query_button w3-bar-item w3-button w3-hover-blue tablink "><i class="fa fa-question-circle" aria-hidden="true"></i> Query</a> -->
     </div>
 
     <div
@@ -188,17 +168,17 @@
       ></iframe>
     </div>
 
-    <div id="sell" class="modal" style="overflow: visible;">
+    <div id="assetHistory" class="modal" style="overflow: visible;">
       <form
         id="sell_form"
-        action="/sell"
+        action="/assetHistory"
         enctype="multipart/form-data"
         method="POST"
         class="modal-content animate"
       >
         <div class="imgcontainer">
           <span
-            onclick="document.getElementById('sell').style.display='none'"
+            onclick="document.getElementById('assetHistory').style.display='none'"
             class="close"
             title="Close Modal"
             style="top: -17px;"
@@ -232,13 +212,6 @@
           />
 
           <label for="car_license_plate"><b>User Name</b></label>
-          <!-- <input
-            type="text"
-            placeholder="Enter Car_License_Plate"
-            name="User_Name"
-            id="User_Name"
-            required
-          /> -->
 
           <select
             class="w3-select w3-border w3-center"
@@ -260,30 +233,19 @@
               margin-right: 45%;
             "
           ></div>
-          <button type="submit">Get Assset History</button>
+          <button class="greenbutton" type="submit">Get Assset History</button>
         </div>
 
         <div class="container" style="background-color: #f1f1f1;">
           <button
             type="button"
-            onclick="document.getElementById('sell').style.display='none'"
+            onclick="document.getElementById('assetHistory').style.display='none'"
             class="cancelbtn"
           >
             Cancel
           </button>
         </div>
       </form>
-    </div>
-
-    <div id="buy" class="iframe_holder" style="display: none;">
-      <iframe
-        src="buy_page.html"
-        width="100%"
-        height="100%"
-        marginwidth="0"
-        marginheight="0"
-        frameborder="0"
-      ></iframe>
     </div>
 
     <div id="login_check" class="iframe_holder" style="display: none;">
@@ -305,75 +267,6 @@
         marginheight="0"
         frameborder="0"
       ></iframe>
-    </div>
-
-    <div id="login" class="modal" style="overflow: visible;">
-      <form
-        id="login_form"
-        action="/login"
-        enctype="multipart/form-data"
-        method="POST"
-        class="modal-content animate"
-      >
-        <div class="imgcontainer">
-          <span
-            onclick="document.getElementById('login').style.display='none'"
-            class="close"
-            title="Close Modal"
-            style="top: -17px;"
-            >&times;</span
-          >
-          <strong><span>Login</span></strong>
-        </div>
-        <hr />
-        <div class="container">
-          <label for="Login_User_Name"><b>Username</b></label>
-          <input
-            type="text"
-            placeholder="Enter Username"
-            name="Login_User_Name"
-            id="Login_User_Name"
-            required
-          />
-
-          <label for="Login_Password"><b>Password</b></label>
-          <input
-            type="password"
-            placeholder="Enter Password"
-            name="Login_Password"
-            id="Login_Password"
-            required
-          />
-
-          <button type="submit">Login</button>
-          <div
-            id="login_loader"
-            class="loader w3-center"
-            style="
-              display: none;
-              width: 50px;
-              height: 50px;
-              margin-left: 45%;
-              margin-right: 45%;
-            "
-          ></div>
-          <label>
-            <input type="checkbox" checked="checked" name="remember" /> Remember
-            me
-          </label>
-        </div>
-
-        <div class="container" style="background-color: #f1f1f1;">
-          <button
-            type="button"
-            onclick="document.getElementById('login').style.display='none'"
-            class="cancelbtn"
-          >
-            Cancel
-          </button>
-          <span class="psw">Forgot <a href="#">password?</a></span>
-        </div>
-      </form>
     </div>
 
     <div id="query_chain_code_div" class="modal" style="overflow: visible;">
@@ -429,7 +322,8 @@
               margin-right: 45%;
             "
           ></div>
-          <button type="submit">Get All Assets</button>
+
+          <button class="greenbutton" type="submit">Get All Assets</button>
         </div>
 
         <div class="container" style="background-color: #f1f1f1;">
@@ -440,83 +334,6 @@
           >
             Cancel
           </button>
-        </div>
-      </form>
-    </div>
-
-    <div id="register" class="modal" style="overflow: visible;">
-      <form
-        id="register_form"
-        action="/register"
-        enctype="multipart/form-data"
-        method="POST"
-        class="modal-content animate"
-      >
-        <div class="imgcontainer">
-          <span
-            onclick="document.getElementById('register').style.display='none'"
-            class="close"
-            title="Close Modal"
-            >&times;</span
-          >
-          <img src="images/avatar2.png" alt="Avatar" class="avatar" />
-        </div>
-
-        <div class="container">
-          <label for="User_Name"><b>Username</b></label>
-          <input
-            type="text"
-            placeholder="Enter Username"
-            id="User_Name"
-            name="User_Name"
-            required
-          />
-
-          <label for="User_Password"><b>Password</b></label>
-          <input
-            type="password"
-            placeholder="Enter Password"
-            id="User_Password"
-            name="User_Password"
-            required
-          />
-
-          <label for="User_House_Number"><b>House_Numeber</b></label>
-          <input
-            type="text"
-            placeholder="Enter House Number"
-            id="User_House_Number"
-            name="User_House_Number"
-            required
-          />
-
-          <button type="submit">Register</button>
-          <div
-            id="register_loader"
-            class="loader w3-center"
-            style="
-              display: none;
-              width: 50px;
-              height: 50px;
-              margin-left: 45%;
-              margin-right: 45%;
-            "
-          ></div>
-          <label>
-            <input type="checkbox" checked="checked" name="remember" /> Remember
-            me
-          </label>
-        </div>
-
-        <div class="container" style="background-color: #f1f1f1;">
-          <button
-            type="button"
-            onclick="document.getElementById('register').style.display='none'"
-            class="cancelbtn"
-          >
-            Cancel
-          </button>
-          <span class="psw">Forgot <a href="#">password?</a></span>
         </div>
       </form>
     </div>
@@ -547,16 +364,13 @@
         >Powered by :</span
       >
     </div>
-    <script type="text/javascript" src="js/send_ajax_request.js"></script>
-    <script type="text/javascript" src="js/double_menu.js"></script>
-    <script type="text/javascript">
-      //$("#home").load("home_page.html");
-      //$("#login").load("login.html");
-    </script>
-    <script type="text/javascript" src="js/modal.js"></script>
-
-    <script type="text/javascript">
-      check_session();
-    </script>
   </body>
+  <script type="text/javascript" src="js/send_ajax_request.js"></script>
+  <script type="text/javascript" src="js/double_menu.js"></script>
+
+  <script type="text/javascript" src="js/modal.js"></script>
+
+  <script type="text/javascript">
+    check_session();
+  </script>
 </html>

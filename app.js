@@ -236,7 +236,7 @@ app.post("/ad_submit", async (req, res) => {
   res.json(response);
 });
 
-app.post("/sell", async (req, res) => {
+app.post("/assetHistory", async (req, res) => {
   let response;
   let car_license_plate = req.body.car_license_plate;
 
